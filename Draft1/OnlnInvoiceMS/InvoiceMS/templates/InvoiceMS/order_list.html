@@ -1,0 +1,120 @@
+<!-- your_app/templates/your_app/order_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        .checkout{
+            margin: 20px;
+        }
+        .checkout a button:hover{
+            background-color: greenyellow;
+            color: darkgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Order Detail - Order ID: {{ order.OrderID }}</h2>
+
+    <h3>Client Information</h3>
+    <table>
+        {% for i in CrntClnt %}
+        <!-- <tr>
+            <th>ClientID</th>
+            <td>{{ i.ClientID }}</td>
+        </tr> -->
+        <tr>
+            <th>ClientName</th>
+            <td>{{ i.ClientName }}</td>
+        </tr>
+        <tr>
+            <th>ClientEmail</th>
+            <td>{{ i.ClientEmail }}</td>
+        </tr>
+        <!-- Add more client fields as needed -->
+        <!-- <tr>
+            <th>ClientID</th>
+            <td>{{ order.ClientID.ClientID }}</td>
+        </tr>
+        <tr>
+            <th>ClientName</th>
+            <td>{{ order.ClientID.ClientName }}</td>
+        </tr>
+        <tr>
+            <th>ClientEmail</th>
+            <td>{{ order.ClientID.ClientEmail }}</td>
+        </tr> -->
+        <!-- Add more client fields as needed -->
+        {% endfor %}
+    </table>
+
+    <h3>Item Information</h3>
+    <table>
+        {% for i in items %}
+        <!-- <tr>
+            <th>ItemID</th>
+            <td>{{ order.ItemID.ItemID }}</td>
+        </tr> -->
+        <tr>
+            <th>ItemName</th>
+            <td>{{ i.ItemName }}</td>
+        </tr>
+        <tr>
+            <th>ItemBrand</th>
+            <td>{{ i.ItemBrand }}</td>
+        </tr>
+        {% endfor %}
+        <!-- Add more item fields as needed -->
+    </table>
+
+    <!-- <h3>Salesman Information</h3>
+    <table>
+        <tr>
+            <th>SalesmanID</th>
+            <td>{{ order.SalesmanID.SalesmanID }}</td>
+        </tr>
+        <tr>
+            <th>SalesmanName</th>
+            <td>{{ order.SalesmanID.SalesmanName }}</td>
+        </tr>
+        <tr>
+            <th>SalesmanEmail</th>
+            <td>{{ order.SalesmanID.SalesmanEmail }}</td>
+        </tr>
+        <!-- Add more salesman fields as needed
+    </table> -->
+
+    <!-- Add more order details as needed -->
+    
+    <div class="checkout">
+        <a href="#"><button>Check out</button></a>
+    </div>
+
+</body>
+
+</html>

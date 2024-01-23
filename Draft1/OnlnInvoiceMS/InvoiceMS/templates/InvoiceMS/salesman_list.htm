@@ -1,0 +1,33 @@
+<!-- your_app/templates/your_app/salesman_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salesman List</title>
+</head>
+<body>
+    <h2>Salesman List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>SalesmanID</th>
+                <th>SalesmanName</th>
+                <th>SalesmanEmail</th>
+                <th>SalesmanPhone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for salesman in salesmen %}
+                <tr>
+                    <td>{{ salesman.SalesmanID }}</td>
+                    <td>{{ salesman.SalesmanName }}</td>
+                    <td>{{ salesman.SalesmanEmail }}</td>
+                    <td>{{ salesman.SalesmanPhone }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

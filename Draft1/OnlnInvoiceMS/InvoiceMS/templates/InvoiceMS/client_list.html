@@ -1,0 +1,173 @@
+<!-- your_app/templates/your_app/client_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client List</title>
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Basic Inputs</h4>
+                </div>
+                <!-- {% if msg %}
+                {% for i in msg %}
+
+                <div class="alert alert-warning">
+                    <h4 class="card-title">{{i}}</h4>
+                </div>
+                {% endfor %}
+                {% endif %} -->
+                <div class="card-body">
+                    <form action="{% url 'clients_insert' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">ClientUserID</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="ClientUserID">
+                                <!-- <input type="hidden" name="id" value="{{ current_client.ClientID }}"> -->
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">ClientName</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="ClientName">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">ClientEmail</label>
+                            <div class="col-md-10">
+                                <input type="email" class="form-control" name="ClientEmail">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">ClientPhone</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="ClientPhone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">ClientAddress</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="ClientAddress">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-10">
+                                <input type="submit" class="form-control" value="Submit">
+                            </div>
+                        </div>
+                        <!-- <div class="form-group row">
+                            <label class="col-form-label col-md-2">Number of happy customers</label>
+                            <div class="col-md-10">
+                                <input type="number" class="form-control" name="customers">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">Number of projects finished</label>
+                            <div class="col-md-10">
+                                <input type="number" class="form-control" name="projects">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">Number of digital awards</label>
+                            <div class="col-md-10">
+                                <input type="number" class="form-control" name="awards">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">Description</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="description">
+                            </div>
+                        </div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Basic Table</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Sl</th>
+                                    <th>Name</th>
+                                    <th>Birthday</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Years of experience</th>
+                                    <th>Number of happy customers</th>
+                                    <th>Number of projects finished</th>
+                                    <th>Number of digital awards</th>
+                                    <th>Description</th>
+                                    <th>Date and Time</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in key %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{i.u_name}}</td>
+                                    <td>{{i.dob}}</td>
+                                    <td>{{i.phone}}</td>
+                                    <td>{{i.email}}</td>
+                                    <td>{{i.no_exp}}</td>
+                                    <td>{{i.no_happy_customers}}</td>
+                                    <td>{{i.no_project_finished}}</td>
+                                    <td>{{i.no_digital_awards}}</td>
+                                    <td>{{i.description}}</td>
+                                    <td>{{i.date_time}}</td>
+                                    <td><a href="{% url 'about_edit' i.id %}" target="_blank">Edit</a>|<a
+                                            href="{% url 'delete' i.id %}">Delete</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+
+
+
+    <h2>Client List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ClientID</th>
+                <th>ClientUserID</th>
+                <th>ClientName</th>
+                <th>ClientEmail</th>
+                <th>ClientPhone</th>
+                <th>ClientAddress</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.ClientID }}</td>
+                    <td>{{ client.ClientUserID }}</td>
+                    <td>{{ client.ClientName }}</td>
+                    <td>{{ client.ClientEmail }}</td>
+                    <td>{{ client.ClientPhone }}</td>
+                    <td>{{ client.ClientAddress }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

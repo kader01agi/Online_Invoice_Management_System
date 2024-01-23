@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert New Item</title>
+</head>
+
+<body>
+    <h2>Insert New Item</h2>
+    <form method="post" action="{% url 'item_insert' %}">
+        {% csrf_token %}
+        <label for="ItemName">Item Name:</label>
+        <input type="text" name="ItemName" required><br>
+
+        <label for="ItemBrand">Item Brand:</label>
+        <input type="text" name="ItemBrand" required><br>
+
+        <label for="ItemDescription">Item Description:</label>
+        <textarea name="ItemDescription" required></textarea><br>
+
+        <label for="ItemUnitPrice">Item Unit Price:</label>
+        <input type="number" name="ItemUnitPrice" step="0.01" required><br>
+
+        <label for="ItemQuantity_in_stock">Quantity in Stock:</label>
+        <input type="number" name="ItemQuantity_in_stock" required><br>
+
+        <button type="submit">Insert Item</button>
+    </form>
+</body>
+
+</html>
